@@ -1,0 +1,17 @@
+# macOS系统文件
+.DS_Store
+
+# VS Code配置
+.vscode/
+
+# 编译/调试产物
+.cph/
+*.dSYM/
+test
+week1_sy2
+week1_zy
+week1_zy2
+week1_zy3
+week1_zy3.bin
+*.out
+*.exe
