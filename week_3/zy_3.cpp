@@ -2,7 +2,7 @@
 #include<queue>
 #include<vector>
 using namespace std;
-
+//这是bfs策略的简单应用
 int bfs(int N,int A,int B,vector<int> &K)
 {
     if(A==B)//如果起点和终点相同，直接返回0步
