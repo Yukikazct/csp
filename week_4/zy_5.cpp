@@ -95,7 +95,6 @@ int main() {
     
     vector<vector<ll>> diff(105, vector<ll>(n + 2, 0));
 
-    // 你的核心代码（完全不动）
     while (m--)
     {
         int l, r, c, b;
@@ -118,7 +117,6 @@ int main() {
             min_num = min(min_num, now);
         }
         
-        // 优化：只用快速幂替换朴素循环，其余不动
         if (min_num > 0) {
             ans = ans * qpow(p, min_num) % MOD;
         }
