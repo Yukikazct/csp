@@ -62,7 +62,7 @@ typedef long long ll;
 const int MOD = 1e9 + 7;
 vector<pair<int, int>> fac[105];
 
-// 100内质因数分解表
+// 预处理1~100的质因数分解表
 void init() {
     for (int i = 1; i <= 100; ++i) {
         int x = i;
@@ -81,7 +81,7 @@ void init() {
 ll qpow(ll a, ll b) {
     ll res = 1;
     while (b) {
-        if (b & 1    ) res = res * a % MOD;
+        if (b & 1) res = res * a % MOD;
         a = a * a % MOD;
         b >>= 1;
     }
@@ -93,14 +93,16 @@ int main() {
     int n, m;
     cin >> n >> m;
     
+    // 二维差分数组：diff[质数][位置]，维护质因数指数的区间增量
     vector<vector<ll>> diff(105, vector<ll>(n + 2, 0));
 
     while (m--)
     {
         int l, r, c, b;
         cin >> l >> r >> c >> b;
-      for (int i = 0; i < fac[c].size(); i++) 
-       {
+        // 分解c，用差分更新区间[l,r]的质因数指数
+        for (int i = 0; i < fac[c].size(); i++) 
+        {
             int p = fac[c][i].first;
             int cnt = fac[c][i].second;
             ll add = (ll)cnt * b;
@@ -112,11 +114,12 @@ int main() {
     ll ans = 1;
     for (int p = 2; p <= 100; ++p) {
         ll now = 0, min_num = 1e18;
+        // 前缀和还原指数得到最小值
         for (int i = 1; i <= n; ++i) {
             now += diff[p][i];
             min_num = min(min_num, now);
         }
-        
+        // 质数^最小指数 乘入答案
         if (min_num > 0) {
             ans = ans * qpow(p, min_num) % MOD;
         }
