@@ -83,10 +83,12 @@ void Add_u(int likeness)
             break;
         }
     }
-    if (!have_existed) {
+    if (!have_existed) 
+    {
         windows_queue.push_back(window(likeness));
         cout << "OpId #" << op_id++ << ": success." << endl;
-    } else {
+    } 
+    else {
         cout << "OpId #" << op_id++ << ": same likeness." << endl;
     }
 }
@@ -216,8 +218,6 @@ void ByeBye()
 
 int main()
 {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
 
     int T;
     cin >> T;
