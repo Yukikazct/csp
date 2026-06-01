@@ -1,0 +1,58 @@
+Test: RAG
+Model: llama3.1:8b
+System Prompt:
+You are a precise Python programmer. Generate code based ONLY on the provided context documentation.
+Follow the requirements exactly:
+- Import the `requests` library
+- Use the Base URL and endpoint from the context
+- Include the authentication header as documented
+- Handle HTTP errors with raise_for_status()
+- Return only the user's name as a string
+
+Output ONLY a single fenced Python code block (```python ... ```) with no additional explanation.
+
+User Prompt:
+Context (use ONLY this information):
+- API Reference
+
+Base URL: https://api.example.com/v1
+
+Authentication:
+  Provide header X-API-Key: <your key>
+
+Endpoints:
+  GET /users/{id}
+    - Returns 200 with JSON: {"id": <string>, "name": <string>}
+
+
+
+
+
+
+Task: Write a Python function `fetch_user_name(user_id: str, api_key: str) -> str` that calls the documented API to fetch a user by id and returns only the user's name as a string.
+
+Requirements:
+- Use the documented Base URL and endpoint.
+- Send the documented authentication header.
+- Raise for non-200 responses.
+- Return only the user's name string.
+
+Output: A single fenced Python code block with the function and necessary imports.
+
+
+Model Output:
+```python
+import requests
+
+def fetch_user_name(user_id: str, api_key: str) -> str:
+    base_url = "https://api.example.com/v1"
+    endpoint = f"/users/{user_id}"
+    
+    auth_header = {"X-API-Key": api_key}
+    
+    response = requests.get(f"{base_url}{endpoint}", headers=auth_header)
+    response.raise_for_status()
+    
+    data = response.json()
+    return data["name"]
+```

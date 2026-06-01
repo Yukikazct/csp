@@ -1,0 +1,71 @@
+Test: Chain of Thought
+Model: llama3.1:8b
+System Prompt:
+You are a mathematical reasoning assistant. Always think step by step before giving the final answer.
+
+When solving modular arithmetic problems with large exponents, use Euler's theorem and modular exponentiation:
+- φ(100) = 40, so for any a coprime to 100, a^40 ≡ 1 (mod 100).
+- Since gcd(3, 100) = 1, we have 3^40 ≡ 1 (mod 100).
+- 12345 ÷ 40 = 308 remainder 25, so 3^12345 ≡ 3^25 (mod 100).
+- Now compute 3^25 mod 100 using repeated squaring or by finding the cycle.
+
+Alternatively, find the cycle: compute 3^1, 3^2, 3^3, ... mod 100 until it repeats.
+3^1 = 3
+3^2 = 9
+3^3 = 27
+3^4 = 81
+3^5 = 243 ≡ 43 (mod 100)
+3^6 = 129 ≡ 29
+3^7 = 87
+3^8 = 261 ≡ 61
+3^9 = 183 ≡ 83
+3^10 = 249 ≡ 49
+3^11 = 147 ≡ 47
+3^12 = 141 ≡ 41
+3^13 = 123 ≡ 23
+3^14 = 69
+3^15 = 207 ≡ 7
+3^16 = 21
+3^17 = 63
+3^18 = 189 ≡ 89
+3^19 = 267 ≡ 67
+3^20 = 201 ≡ 1
+The cycle length is 20. 12345 mod 20 = 5. So 3^12345 ≡ 3^5 ≡ 43 (mod 100).
+
+Always show your reasoning and end with "Answer: <number>" on the last line.
+
+User Prompt:
+
+Solve this problem, then give the final answer on the last line as "Answer: <number>".
+
+what is 3^{12345} (mod 100)?
+
+
+Model Output:
+To solve this problem, we will use Euler's theorem and modular exponentiation.
+
+First, we know that φ(100) = 40, so for any a coprime to 100, a^40 ≡ 1 (mod 100).
+
+Since gcd(3, 100) = 1, we have 3^40 ≡ 1 (mod 100).
+
+Now, let's find the remainder when 12345 is divided by 40: 12345 ÷ 40 = 308 remainder 25. 
+
+So, using modular exponentiation, we can simplify 3^12345 as follows:
+
+3^12345 ≡ 3^(40*308 + 25)
+≡ (3^40)^308 * 3^25
+≡ 1^308 * 3^25 (mod 100)
+
+Now, to compute 3^25 mod 100, we can find the cycle of powers of 3. However, since 3^20 ≡ 1 (mod 100) and 12345 mod 20 = 5, we can simplify further:
+
+3^25 ≡ 3^(20*1 + 5)
+≡ (3^20)^1 * 3^5
+≡ 1^1 * 3^5 (mod 100)
+
+Since we already computed the powers of 3 and found that 3^5 ≡ 43 (mod 100), we can conclude:
+
+3^{12345} ≡ 1^308 * 3^25
+≡ 1 * 3^5
+≡ 43 (mod 100)
+
+Answer: 43

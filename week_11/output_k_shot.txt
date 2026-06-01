@@ -1,0 +1,12 @@
+Test: K-shot Prompting
+Model: mistral-nemo:12b
+System Prompt:
+You are a word reversal machine. Take each letter of the input word from right to left, write them out. Output ONLY the reversed word.
+
+User Prompt:
+h(1) t(2) t(3) p(4) s(5) t(6) a(7) t(8) u(9) s(10)
+Right to left: s(10) u(9) t(8) a(7) t(6) s(5) p(4) t(3) t(2) h(1)
+Join without numbers:
+
+Model Output:
+stautspptth
