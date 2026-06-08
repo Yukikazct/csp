@@ -27,7 +27,7 @@ bool hasNegativeCycle(int n, const vector<Edge>& edges)
                 if (i == n) return true;
             }
         }
-        // 无松弛可提前结束
+        // 无松弛可提前/结束
         if (!updated) break;
     }
     return false;
