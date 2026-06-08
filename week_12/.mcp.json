@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "code-analyzer": {
+      "command": "/opt/anaconda3/bin/python3.12",
+      "args": ["/Users/a/Desktop/csp/week_12/code_analyzer_server.py"],
+      "env": {}
+    }
+  }
+}
